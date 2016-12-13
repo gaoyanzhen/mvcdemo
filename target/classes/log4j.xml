@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<!DOCTYPE log4j:configuration PUBLIC "-//APACHE//DTD LOG4J 1.2//EN" "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+  <!-- [控制台STDOUT] -->
+  <appender name="CONSOLE" class="org.apache.log4j.ConsoleAppender">
+     <param name="target" value="System.out" />
+     <param name="Threshold" value="INFO" />
+     <layout class="org.apache.log4j.PatternLayout">
+       	<param name="ConversionPattern" value="%d{ABSOLUTE} [%c{1}] %-5p %m%n" />
+     </layout>
+  </appender>
+
+  <!-- [公共Appender] -->
+  <appender name="DEFAULT-APPENDER" class="org.apache.log4j.RollingFileAppender">
+     <param name="File" value="d:/logs/common-default.log" />
+     <param name="Append" value="true" />
+     <param name="Threshold" value="INFO" />
+     <param name="MaxFileSize" value="2MB" />
+     <param name="MaxBackupIndex" value="10" />
+     <layout class="org.apache.log4j.PatternLayout">
+		<param name="ConversionPattern" value="%d [%c{1}] %-5p %m%n" />
+     </layout>
+   </appender>
+
+   <!-- [错误日志APPENDER] -->
+   <appender name="ERROR-APPENDER" class="org.apache.log4j.RollingFileAppender">
+     <param name="File" value="D:/logs/common-error.log" />
+     <param name="Append" value="true" />
+     <param name="MaxFileSize" value="2MB" />
+     <param name="Threshold" value="ERROR" />
+     <param name="MaxBackupIndex" value="10" />
+     <layout class="org.apache.log4j.PatternLayout">
+        <param name="ConversionPattern" value="%d [%c{1}] %-5p %m%n" />
+     </layout>
+   </appender>
+
+   <!-- [组件日志APPENDER] -->
+	<appender name="COMPONENT-APPENDER" class="org.apache.log4j.RollingFileAppender">
+		<param name="File" value="D:/logs/logistics-component.log" />
+     	<param name="Append" value="true" />
+     	<param name="MaxFileSize" value="2MB" />
+    	<param name="MaxBackupIndex" value="10" />
+     	<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d [%c{1}] %-5p %m%n" />
+     	</layout>
+   </appender>
+
+   <!-- [组件日志] -->
+   <logger name="com.gyz.controller">
+      <level value="INFO" />
+      <appender-ref ref="COMPONENT-APPENDER" />
+   </logger>
+
+   <!-- Root Logger -->
+   <root>
+		<level value="INFO"></level>
+      	<appender-ref ref="ERROR-APPENDER" />
+      	<appender-ref ref="DEFAULT-APPENDER" />
+      	<appender-ref ref="CONSOLE" />
+	</root>
+</log4j:configuration>
