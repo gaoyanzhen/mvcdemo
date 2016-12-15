@@ -50,9 +50,14 @@ public class LoginController {
 		return view;
 	}
 
-	@RequestMapping(params = "register")
+	@RequestMapping(params = "action=register")
 	public String register(ModelMap model) {
 		return "register";
+	}
+	
+	@RequestMapping(params = "action=opinion")
+	public String opinion(ModelMap model) {
+		return "opinion";
 	}
 
 }

@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8" pageEncoding="utf-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -14,6 +13,10 @@
 <script type="text/javascript" src="bootstrap3.3.0/js/bootstrap.min.js"></script>
 <title>首页1</title>
 </head>
+<frameset id="mainFrame">
+	<frame id="topFrame" src="jsp/menu.jsp"/>
+	<frame id="contentFrame" src="jsp/content.jsp"> 
+</frameset>
 <body>
 <nav class="navbar navbar-default navbar-static-top" role="navigation">
 	<div class="container-fluid"> 

@@ -53,7 +53,7 @@
 
    <!-- Root Logger -->
    <root>
-		<level value="INFO"></level>
+		<level value="DEBUG"></level>
       	<appender-ref ref="ERROR-APPENDER" />
       	<appender-ref ref="DEFAULT-APPENDER" />
       	<appender-ref ref="CONSOLE" />
