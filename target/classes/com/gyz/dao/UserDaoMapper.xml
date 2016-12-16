@@ -13,4 +13,7 @@
     <select id="getUserByName" parameterType="String" resultType="com.gyz.po.User">
         select * from tuser where name= #{name};
     </select>
+    <select id="getAllUsers" resultType="com.gyz.po.User">
+       SELECT id, name, password, age, address FROM tuser ORDER BY id asc;
+    </select>
 </mapper>

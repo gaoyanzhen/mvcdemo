@@ -1,6 +1,10 @@
 package com.gyz.controller;
 
+import java.util.List;
 import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -58,6 +62,14 @@ public class LoginController {
 	@RequestMapping(params = "action=opinion")
 	public String opinion(ModelMap model) {
 		return "opinion";
+	}
+	
+	@RequestMapping(params = "action=content")
+	public String content(HttpServletRequest request,HttpServletResponse response) {
+		List<User> userList = userService.getAllUsers();
+		request.setAttribute("userList", userList);
+		logger.info("查看登录用户个数：" + userList.size());
+		return "userList";
 	}
 
 }
