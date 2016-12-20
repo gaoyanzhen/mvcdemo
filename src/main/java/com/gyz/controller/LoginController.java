@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.gyz.po.User;
 import com.gyz.service.IUserService;
+import com.gyz.util.PageModel;
 
 @Controller
 @RequestMapping("/login")
@@ -66,8 +67,15 @@ public class LoginController {
 	
 	@RequestMapping(params = "action=content")
 	public String content(HttpServletRequest request,HttpServletResponse response) {
-		List<User> userList = userService.getAllUsers();
-		request.setAttribute("userList", userList);
+		String page = request.getParameter("page");
+		logger.info("当前：" + page);
+		int totalRecord = userService.countAll();
+		PageModel pageModel = PageModel.newPageModel(5, page, totalRecord);
+		List<User> userList = userService.getUserByPage(pageModel);
+		pageModel.setDataList(userList);
+		request.setAttribute("pageModel", pageModel);
+		request.setAttribute("currentPage", pageModel.getCurrentPage());
+		
 		logger.info("查看登录用户个数：" + userList.size());
 		return "userList";
 	}

@@ -16,4 +16,20 @@
     <select id="getAllUsers" resultType="com.gyz.po.User">
        SELECT id, name, password, age, address FROM tuser ORDER BY id asc;
     </select>
+    <select id="getUserByPage"  parameterType="int" resultType="com.gyz.po.User">
+     <![CDATA[   
+   		SELECT * FROM
+			(SELECT *,ROW_NUMBER() OVER(ORDER BY id) AS 'RowNumber' FROM tuser) a 
+   			WHERE a.RowNumber > #{0} AND a.RowNumber<= #{1};
+   	 ]]>
+    </select>
+    <select id="deleteUser" parameterType="String">
+       	DELETE FROM tuser WHERE id=#{userId};
+    </select>
+    <select id="getUserById" parameterType="String" resultType="com.gyz.po.User">
+       	SELECT id, name, password, age, address FROM tuser WHERE id=#{id};
+    </select>
+    <select id="updateUser" parameterType="com.gyz.po.User">
+       	UPDATE tuser SET name = #{name}, password = #{password}, age = #{age}, address = #{address} where id=#{id};
+    </select>
 </mapper>

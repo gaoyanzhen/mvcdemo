@@ -11,7 +11,7 @@
 <title>注册</title>
 <script type="text/javascript">
 	function toBack() {
-		$("form:first").attr("action", "/mvcdemo/login.do");
+		$("form:first").attr("action", "/mvcdemo/user.do?action=getUserList&page=");
 		$("form:first").submit();
 	}
 </script>
@@ -29,6 +29,7 @@
 		<label class="col-sm-2 control-label" for="name">用户名</label>
 		<div class="col-sm-2">
 			<input type="text" class="form-control" name="name" id="name" value="${user.name }">
+			<input type="hidden" name="id" id="id" value="${user.id }">
 		</div>
 	</div>
 	<div class="form-group">

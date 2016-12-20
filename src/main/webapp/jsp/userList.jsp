@@ -12,6 +12,13 @@
 <title>用户查询</title>
 </head>
 <body>
+	<c:choose>
+		<c:when test="${message != null&&message != ''}">
+			<div class="form-group">
+				<div class="alert alert-danger col-sm-offset-2 col-sm-2">${message}</div>
+			</div>
+		</c:when>
+	</c:choose>
 	<table class="table table-bordered">
 		<caption>用户列表</caption>
 		<thead>
@@ -20,27 +27,35 @@
 				<th>姓名</th>
 				<th>年龄</th>
 				<th>地址</th>
+				<th>操作</th>
 			</tr>
 		</thead>
 		<tbody>
-		<c:forEach var="user" items="${userList }" varStatus="xh">
+		<c:forEach var="user" items="${pageModel.dataList }" varStatus="xh">
 			<tr>
-				<td><c:out value="${xh.index+1}"/></td>
-				<td>${user.name}</td>
-				<td>${user.age}</td>
-				<td>${user.address}</td>
+				<td style="width: 10%;"><c:out value="${xh.index+1}"/></td>
+				<td style="width: 20%;">
+					<a href="/mvcdemo/user.do?action=modify&userId=${user.id}">${user.name}</a>
+				</td>
+				<td style="width: 10%;">${user.age}</td>
+				<td style="width: 40%;">${user.address}</td>
+				<td style="width: 20%;"><a href="/mvcdemo/user.do?action=delete&userId=${user.id}&page=${pageModel.currentPage}">删除</a></td>
 			</tr>
 		</c:forEach>
 		</tbody>
 	</table>
 	<ul class="pagination">
-		<li><a href="#">&laquo;</a></li>
-		<li class="active"><a href="#">1</a></li>
-		<li class="disabled"><a href="#">2</a></li>
-		<li><a href="#">3</a></li>
-		<li><a href="#">4</a></li>
-		<li><a href="#">5</a></li>
-		<li><a href="#">&raquo;</a></li>
+	
+		<c:forEach var="i" begin="1" end="${pageModel.totalPage}">
+		<c:choose>
+			<c:when test='${i==pageModel.currentPage}'>
+			<li class="active"><a href="/mvcdemo/user.do?action=getUserList&page=${i}">${i}</a></li>
+			</c:when>
+			 <c:otherwise>
+        	<li><a href="/mvcdemo/user.do?action=getUserList&page=${i}">${i}</a></li>
+    		</c:otherwise>
+    	</c:choose>
+		</c:forEach>
 	</ul>
 </body>
 </html>

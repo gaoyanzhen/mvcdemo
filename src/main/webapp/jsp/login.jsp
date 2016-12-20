@@ -17,6 +17,7 @@ function registerUser(){
 <title>登录</title>
 </head>
 <body>
+	<div class="container">
 	<form action="/mvcdemo/login.do?action=login" method="post" class="form-horizontal" role="form" >
 		<c:choose>
 			<c:when test="${message != null&&message != ''}">
@@ -46,5 +47,6 @@ function registerUser(){
 			</div>
 		</div>
 	</form>
+	</div>
 </body>
 </html>

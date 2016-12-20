@@ -8,11 +8,11 @@
 <link rel="stylesheet" href="bootstrap3.3.0/css/bootstrap-theme.min.css">
 <script type="text/javascript" src="js/jquery-1.11.1.js" ></script>
 <script type="text/javascript" src="bootstrap3.3.0/js/bootstrap.min.js"></script>
-<title>首页12</title>
+<title>首页</title>
 <script type="text/javascript">
 	//用户管理
 	function toUserList(){
-		$('#content').attr('src','/mvcdemo/login.do?action=content');
+		$('#content').attr('src','/mvcdemo/user.do?action=getUserList');
 	}
 	//意见反馈
 	function toOpinion(){
