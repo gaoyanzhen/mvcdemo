@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:jaxws="http://cxf.apache.org/jaxws" 
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans    
+        http://www.springframework.org/schema/beans/spring-beans-4.3.xsd    
+        http://cxf.apache.org/jaxws     
+        http://cxf.apache.org/schemas/jaxws.xsd">
+        
+	<!-- 引入CXF Bean定义如下,早期的版本中使用 -->
+    <import resource="classpath:META-INF/cxf/cxf.xml" />
+    <!-- <import resource="classpath:META-INF/cxf/cxf-extension-soap.xml" />
+    <import resource="classpath:META-INF/cxf/cxf-servlet.xml" /> -->
+    
+    <!-- 通过spring配置文件发布CXF的服务 start -->
+    
+    <!-- 第一种发布方式：没有接口的发布(简单发布) -->
+    <!-- 
+		id:唯一标识
+		address：访问url
+		implementor：提供服务的类型 
+	
+    <jaxws:endpoint id="helloService" address="/hello" implementor="kaiyi.HelloService">
+		加入消息拦截器
+		<jaxws:inInterceptors>
+			<bean class="org.apache.cxf.interceptor.LoggingInInterceptor"></bean>
+		</jaxws:inInterceptors>
+		<jaxws:outInterceptors>
+			<bean class="org.apache.cxf.interceptor.LoggingOutInterceptor"></bean>
+		</jaxws:outInterceptors>
+	</jaxws:endpoint> -->
+	
+	<!-- 第二种发布方式：带有接口的发布 -->
+	<!-- 
+		id:唯一标识
+		address：请求的服务地址
+		iserviceClass：客户端接口
+	 -->
+    <jaxws:server id="testService" serviceClass="com.gyz.ws.IWebService" address="/test">
+        <jaxws:serviceBean>
+        	<!-- 提供服务的实现类 -->
+            <bean class="com.gyz.ws.WebServiceImpl"></bean>
+        </jaxws:serviceBean>
+        <!-- 加入消息拦截器  -->
+        <jaxws:inInterceptors>
+			<bean class="org.apache.cxf.interceptor.LoggingInInterceptor"></bean>
+		</jaxws:inInterceptors>
+		<jaxws:outInterceptors>
+			<bean class="org.apache.cxf.interceptor.LoggingOutInterceptor"></bean>
+		</jaxws:outInterceptors>
+    </jaxws:server>
+    
+    <!-- 通过spring配置文件发布CXF的服务 end -->
+</beans>

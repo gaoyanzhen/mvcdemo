@@ -10,6 +10,7 @@
         <!-- log4j日志文件管理包版本 -->  
         <slf4j.version>1.7.7</slf4j.version>  
         <log4j.version>1.2.17</log4j.version>  
+        <cxf.version>3.1.7</cxf.version>  
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
 	<dependencies>
@@ -70,11 +71,11 @@
 		    <artifactId>mybatis-spring</artifactId>
 		    <version>1.2.2</version>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/jstl/jstl -->
 		<dependency>
-		    <groupId>javax.servlet</groupId>
+		    <groupId>jstl</groupId>
 		    <artifactId>jstl</artifactId>
 		    <version>1.2</version>
-		     <scope>runtime</scope>  
 		</dependency>
 		<dependency>
 		    <groupId>commons-dbcp</groupId>
@@ -94,37 +95,74 @@
 		    <version>1.1.2</version>
 		</dependency>
 		<!-- 日志文件管理包 -->  
-        <!-- log start -->  
+        <!-- log4j start -->  
         <dependency>  
             <groupId>log4j</groupId>  
             <artifactId>log4j</artifactId>  
             <version>${log4j.version}</version>  
         </dependency>  
-        <!-- 格式化对象，方便输出日志 -->  
-        <dependency>  
-            <groupId>com.alibaba</groupId>  
-            <artifactId>fastjson</artifactId>  
-            <version>1.1.41</version>  
-        </dependency>  
         <dependency>  
             <groupId>org.slf4j</groupId>  
             <artifactId>slf4j-api</artifactId>  
             <version>${slf4j.version}</version>  
-        </dependency>  
-        <dependency>  
-            <groupId>org.slf4j</groupId>  
-            <artifactId>slf4j-log4j12</artifactId>  
-            <version>${slf4j.version}</version>  
-        </dependency>  
-        <!-- log end -->   
+        </dependency>
+         <!-- log4j end -->  
+        <!-- webservice start -->
+		<dependency>
+		    <groupId>org.apache.cxf</groupId>
+		    <artifactId>cxf-core</artifactId>
+		    <version>${cxf.version}</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.apache.cxf</groupId>
+		    <artifactId>cxf-rt-bindings-soap</artifactId>
+		    <version>${cxf.version}</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.apache.cxf</groupId>
+		    <artifactId>cxf-rt-databinding-jaxb</artifactId>
+		    <version>${cxf.version}</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.apache.cxf</groupId>
+		    <artifactId>cxf-rt-frontend-jaxws</artifactId>
+		    <version>${cxf.version}</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.apache.cxf</groupId>
+		    <artifactId>cxf-rt-frontend-simple</artifactId>
+		    <version>${cxf.version}</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.apache.cxf</groupId>
+		    <artifactId>cxf-rt-transports-http</artifactId>
+		    <version>${cxf.version}</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.apache.cxf</groupId>
+		    <artifactId>cxf-rt-wsdl</artifactId>
+		    <version>${cxf.version}</version>
+		</dependency>
+		<dependency>
+		    <groupId>wsdl4j</groupId>
+		    <artifactId>wsdl4j</artifactId>
+		    <version>1.6.3</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.apache.ws.xmlschema</groupId>
+		    <artifactId>xmlschema-core</artifactId>
+		    <version>2.2.1</version>
+		</dependency>
+		<!-- webservice end -->
 	</dependencies>
   <build>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>1.4.2.RELEASE</version>
             </plugin>
-            <plugin>
+            <plugin> 
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
                 <version>2.2</version>
