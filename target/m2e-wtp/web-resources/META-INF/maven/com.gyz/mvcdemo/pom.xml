@@ -8,9 +8,10 @@
         <org.springframework-version>4.3.2.RELEASE</org.springframework-version>
         <org.hibernate-version>4.3.11.Final</org.hibernate-version>
         <!-- log4j日志文件管理包版本 -->  
-        <slf4j.version>1.7.7</slf4j.version>  
+        <slf4j.version>1.7.21</slf4j.version>  
         <log4j.version>1.2.17</log4j.version>  
-        <cxf.version>3.1.7</cxf.version>  
+        <cxf.version>3.1.7</cxf.version>
+        <poi.version>3.14</poi.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
 	<dependencies>
@@ -60,7 +61,7 @@
 		    <version>4.12</version>
 		</dependency>
 		
-		<!-- mybatis -->
+		<!-- mybatis start-->
 		<dependency>
 		    <groupId>org.mybatis</groupId>
 		    <artifactId>mybatis</artifactId>
@@ -71,7 +72,7 @@
 		    <artifactId>mybatis-spring</artifactId>
 		    <version>1.2.2</version>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/jstl/jstl -->
+		<!-- mybatis end-->
 		<dependency>
 		    <groupId>jstl</groupId>
 		    <artifactId>jstl</artifactId>
@@ -83,12 +84,13 @@
 		    <version>1.4</version>
 		</dependency>
 		
-		<!-- sqlserver驱动 -->
+		<!-- sqlserver驱动 start -->
 		<dependency>
 			<groupId>com.microsoft</groupId>
 			<artifactId>sqljdbc</artifactId>
 			<version>1.0</version>
 		</dependency>
+		<!-- sqlserver驱动 end -->
 		<dependency>
 		    <groupId>taglibs</groupId>
 		    <artifactId>standard</artifactId>
@@ -106,6 +108,16 @@
             <artifactId>slf4j-api</artifactId>  
             <version>${slf4j.version}</version>  
         </dependency>
+		<dependency>
+		    <groupId>org.slf4j</groupId>
+		    <artifactId>slf4j-log4j12</artifactId>
+		    <version>${slf4j.version}</version>
+		</dependency>
+		<dependency>
+		    <groupId>commons-logging</groupId>
+		    <artifactId>commons-logging</artifactId>
+		    <version>1.2</version>
+		</dependency>
          <!-- log4j end -->  
         <!-- webservice start -->
 		<dependency>
@@ -154,6 +166,18 @@
 		    <version>2.2.1</version>
 		</dependency>
 		<!-- webservice end -->
+		<!-- poi start -->
+		<dependency>
+		    <groupId>org.apache.poi</groupId>
+		    <artifactId>poi</artifactId>
+		    <version>${poi.version}</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.apache.poi</groupId>
+		    <artifactId>poi-ooxml</artifactId>
+		    <version>${poi.version}</version>
+		</dependency>
+		<!-- poi end -->
 	</dependencies>
   <build>
         <plugins>

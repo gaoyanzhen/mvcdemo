@@ -1,5 +1,6 @@
 eclipse.preferences.version=1
 encoding//src/main/java=UTF-8
+encoding//src/main/java/com/gyz/po/Student.java=GBK
 encoding//src/main/java/com/gyz/ws/IWebService.java=UTF-8
 encoding//src/main/java/com/gyz/ws/WebServiceImpl.java=GBK
 encoding//src/main/resources=UTF-8
